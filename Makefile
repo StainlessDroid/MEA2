@@ -6,7 +6,7 @@
 #    By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 18:51:54 by mpascual          #+#    #+#              #
-#    Updated: 2023/02/18 17:03:11 by mpascual         ###   ########.fr        #
+#    Updated: 2023/02/19 18:37:03 by mpascual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT_DIR	= ./libft
 LIBFT		= libft.a
 LIBFT_HEAD	= $(LIBFT_DIR)/header.h
 HEADER		= fdf.h
-SRC_FILES	= fdf.c color.c read_map.c
+SRC_FILES	= fdf.c color.c read_map.c utils.c
 BONUS_SRC	=
 
 ifdef WITH_BONUS
@@ -53,7 +53,7 @@ $(LNAME): $(OBJS) $(HEADER)
 
 $(NAME): $(OBJS) $(HEADER)
 	@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-	$(CC) $(CFLAGS) $(OBJS) $(MFLAGS) -o $(NAME) -L $(LIBFT_DIR)/$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MFLAGS) -o $(NAME) -L. $(LIBFT_DIR)/$(LIBFT)
 	@echo "$(GREEN)$(NAME) created ✓${CLR_RMV}"
 
 $(OBJS): $(SRCS)

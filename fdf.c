@@ -6,19 +6,11 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:58:18 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/18 16:58:54 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:35:05 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void    diy_pixel_put(t_data *data, int x, int y, int color)
-{
-    char    *dst;
-
-    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-    *(unsigned int*)dst = color;
-}
 
 int     keypress(int keycode, t_mlx_vars *vars)
 {
@@ -30,15 +22,19 @@ int     keypress(int keycode, t_mlx_vars *vars)
     return (0);
 }
 
-int main()
+int main(int argc, char **argv)
 {
     t_mlx_vars  vars;
     t_data      img;
+    t_map_tools map;
 
     vars.mlx = mlx_init();
+    map.fd = open(argv[1], O_RDONLY);
+    if (map.fd == -1 || argc != 2)
+        exit(error_message());
     vars.width = 600;
     vars.height = 600;
-    vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "Testing");
+    vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "MEA2");
     img.img = mlx_new_image(vars.mlx, vars.width, vars.height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
