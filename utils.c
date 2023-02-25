@@ -6,16 +6,21 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:04 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/19 17:28:46 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:13:31 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int     error_message(void)
+int     error_exit(int flag)
 {
     ft_putstr("Error\n");
-    return (EXIT_FAILURE);
+    if (flag == 1)
+        ft_putstr("Invalid map\n");
+    else if (flag == 2)
+        ft_putstr("Memory allocation failed\n");
+    //call to free_mem functions
+    return (1);
 }
 
 void    diy_pixel_put(t_data *data, int x, int y, int color)
@@ -26,8 +31,23 @@ void    diy_pixel_put(t_data *data, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
+/* Here the 3D point (voxel) gets converted to it's 2D equivalent (pixel)
+** and adjusted for isometric representation
+*/
+t_pixel voxtopix(t_voxel source)
+{
+    t_pixel dst;
+    int     angle;
+
+    angle = 45;
+    dst.x = source.x + cos(angle) * source.z - cos(angle) * source.y;
+    dst.y = -source.y * sin(angle) - source.z * sin(angle);
+    dst.color = source.color;
+    return (dst);
+}
+
 /* Bresenham's line drawing algorithm */
-void    draw_line(t_data *data, t_point *a, t_point *b)
+void    draw_line(t_data *data, t_pixel *a, t_pixel *b)
 {
     int dx, dy;
     int p;
