@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:58:18 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/27 17:35:47 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:19:49 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int main(int argc, char **argv)
         exit(error_exit(1));
     else
     {
-        vars.img_width = 800;
-        vars.img_height = 600;
+        vars.img_width = 1024;
+        vars.img_height = 768;
         vars.win = mlx_new_window(vars.mlx, vars.img_width, vars.img_height, "FDF");
         img.img = mlx_new_image(vars.mlx, vars.img_width, vars.img_height);
 	    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,

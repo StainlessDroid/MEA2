@@ -6,7 +6,7 @@
 #    By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 18:51:54 by mpascual          #+#    #+#              #
-#    Updated: 2023/02/27 17:01:53 by mpascual         ###   ########.fr        #
+#    Updated: 2023/02/27 18:57:20 by mpascual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ endif
 
 OBJS			= $(SRCS:.c=.o)
 CC				= gcc
-CFLAGS			= -Wall -Wextra #-Werror
+CFLAGS			= -Wall -Wextra -Werror
 
 # Flags for minilibx compilation in linux and mac
 LFLAGS			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:45:07 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/25 18:36:17 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:58:48 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int map_error(char *line, char **aux)
 
 int read_map(t_map_tools *m_tools)
 {
-    int i;
+    int     i;
     char    *line;
     char    **aux;
 
@@ -45,10 +45,11 @@ int read_map(t_map_tools *m_tools)
         if (m_tools->columns < 0)
             return (map_error(line, NULL));
         aux = ft_split(line, ' ');
-        if (aux == NULL)
-            return (map_error(line, aux));
         m_tools->map[i] = malloc(sizeof(t_voxel) * m_tools->columns);
+        if (m_tools->map[i] == NULL)
+            return (map_error(line, aux));
         store_map(m_tools, aux);
+        i++;
         m_tools->rows++;
     }
     return (EXIT_SUCCESS);
