@@ -6,19 +6,24 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:58:18 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/25 14:53:52 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:35:47 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+int     close_win(t_mlx_vars * vars)
+{
+    mlx_destroy_window(vars->mlx, vars->win);
+    //free stuff just in case
+    exit(EXIT_FAILURE);
+    return (0);
+}
+
 int     keypress(int keycode, t_mlx_vars *vars)
 {
     if (keycode == KEY_ESCAPE)
-    {
-        mlx_destroy_window(vars->mlx, vars->win);
-        exit(EXIT_SUCCESS);
-    }
+        close_win(vars);
     return (0);
 }
 
@@ -46,6 +51,7 @@ int main(int argc, char **argv)
 	    							&img.endian);
         mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
         mlx_hook(vars.win, 2, 1L<<0, keypress, &vars);
+        mlx_hook(vars.win, 17, 0L, close_win, &vars);
         mlx_loop(vars.mlx);
     }
     return (EXIT_SUCCESS);
