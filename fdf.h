@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:59:02 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/27 18:57:01 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/27 21:24:29 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int		check_line(char *line, int columns);
 int     map_error(char *line, char **aux);
 /* from store_map.c */
 void    free_map(t_map_tools *m_tools);
-int     get_color(char *str);
 void    store_map(t_map_tools *m_tools, char **aux);
 /* from colors.C */
 int     create_trgb(int t, int r, int g, int b);
