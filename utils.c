@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:04 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/25 19:02:14 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:04:37 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ int     error_exit(int flag)
     return (1);
 }
 
-void    diy_pixel_put(t_data *data, int x, int y, int color)
+void    diy_pixel_put(t_img_data *data, int x, int y, int color)
 {
     char    *dst;
-
     dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
     *(unsigned int*)dst = color;
 }
@@ -45,33 +44,4 @@ t_pixel voxtopix(t_voxel source)
     dst.y = -source.y * sin(angle) - source.z * sin(angle);
     dst.color = source.color;
     return (dst);
-}
-
-/* Bresenham's line drawing algorithm */
-void    draw_line(t_data *data, t_pixel *a, t_pixel *b)
-{
-    int dx, dy;
-    int p;
-    int x, y;
-
-    dx = b->x - a->x;
-    dy = b->y - a->y;
-    p = 2 * dy - dx;
-    x = a->x;
-    y = a->y;
-    while(x < b->x)
-    {
-        if (p >= 0)
-        {
-            diy_pixel_put(data, x, y, 0xFFFFFF);
-            y = y + 1;
-            p = p + 2 * dy - 2 * dx;
-        }
-        else
-        {
-            diy_pixel_put(data, x, y, 0xFFFFFF);
-            p = p + 2 * dy;
-        }
-        x++;
-    }
 }

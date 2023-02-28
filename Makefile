@@ -6,7 +6,7 @@
 #    By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 18:51:54 by mpascual          #+#    #+#              #
-#    Updated: 2023/02/27 18:57:20 by mpascual         ###   ########.fr        #
+#    Updated: 2023/02/28 12:54:19 by mpascual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT_DIR	= ./libft
 LIBFT		= libft.a
 LIBFT_HEAD	= $(LIBFT_DIR)/header.h
 HEADER		= fdf.h
-SRC_FILES	= fdf.c utils.c read_map.c color.c store_map.c
+SRC_FILES	= fdf.c utils.c read_map.c color.c store_map.c draw_map.c
 BONUS_SRC	=
 
 ifdef WITH_BONUS

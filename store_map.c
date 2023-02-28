@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 13:10:52 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/27 21:34:24 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:45:00 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void    free_map(t_map_tools *m_tools)
 /*
 ** Transfer the current line of the map
 */
+
 void    store_map(t_map_tools *m_tools, char **aux)
 {
     int x;

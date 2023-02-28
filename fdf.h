@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:59:02 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/27 21:24:29 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:07:10 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 # endif
 # include "headers/colors.h"
 
-typedef struct s_data
+typedef struct s_img_data
 {
     void    *img;
     char    *addr;
     int     bits_per_pixel;
     int     line_length;
     int     endian;
-}               t_data;
+}               t_img_data;
 
 typedef struct s_mlx_vars
 {
@@ -71,8 +71,8 @@ typedef struct s_map_tools
 
 /* from utils.c */
 int     error_exit(int flag);
-void    diy_pixel_put(t_data *data, int x, int y, int color);
-void    draw_line(t_data *data, t_pixel *a, t_pixel *b);
+void    diy_pixel_put(t_img_data *data, int x, int y, int color);
+t_pixel voxtopix(t_voxel source);
 /* from fdf.c */
 int     keypress(int keycode, t_mlx_vars *vars);
 /* from read_map.c*/
@@ -82,6 +82,9 @@ int     map_error(char *line, char **aux);
 /* from store_map.c */
 void    free_map(t_map_tools *m_tools);
 void    store_map(t_map_tools *m_tools, char **aux);
+/* from draw_map.c */
+void    draw_line(t_img_data *data, t_pixel *a, t_pixel *b);
+void    draw_map(t_map_tools *mtools, t_img_data *data);
 /* from colors.C */
 int     create_trgb(int t, int r, int g, int b);
 int	    get_t(int trgb);
