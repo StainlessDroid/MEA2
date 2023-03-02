@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:04 by mpascual          #+#    #+#             */
-/*   Updated: 2023/02/28 16:04:37 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:58:09 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ void    diy_pixel_put(t_img_data *data, int x, int y, int color)
 t_pixel voxtopix(t_voxel source)
 {
     t_pixel dst;
-    int     angle;
 
-    angle = 45;
-    dst.x = source.x + cos(angle) * source.z - cos(angle) * source.y;
-    dst.y = -source.y * sin(angle) - source.z * sin(angle);
-    dst.color = source.color;
+    dst.x =450 + (source.x - source.y) * 12;
+    dst.y =150 + (source.x + source.y) * 12 - (source.z * 6);
+    if (source.z > 0)
+        dst.color = 0xFF0000;
+    else
+        dst.color = source.color;
     return (dst);
 }
