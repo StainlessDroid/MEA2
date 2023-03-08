@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:59:02 by mpascual          #+#    #+#             */
-/*   Updated: 2023/03/02 19:51:02 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:19:40 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int     map_error(char *line, char **aux);
 void    free_map(t_map_tools *m_tools);
 void    store_map(t_map_tools *m_tools, char **aux);
 /* from draw_map.c */
-void    draw_line(t_img_data *data, t_pixel a, t_pixel b);
+int    draw_line_low(t_img_data *data, t_pixel a, t_pixel b);
+int    draw_line_high(t_img_data *data, t_pixel a, t_pixel b);
 void    draw_map(t_map_tools *mtools, t_img_data *data);
 /* from colors.C */
 int     create_trgb(int t, int r, int g, int b);
