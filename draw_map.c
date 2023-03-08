@@ -6,15 +6,17 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:10:56 by mpascual          #+#    #+#             */
-/*   Updated: 2023/03/08 22:39:33 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:03:10 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/* Bresenham's line drawing algorithm 
-**  two similar functions for low and high slope are needed
-    
+/*
+** I used the Bresenham's line algorithm 
+** https://wikipedia.org/wiki/Bresenham's_line_algorithm
+**  Two different functions are needed for lines with (-1 < slope < 1) (low)
+**  or (-1 > slope || slope > 1) (high)
 */
 int    draw_line_low(t_img_data *data, t_pixel a, t_pixel b)
 {
@@ -84,6 +86,11 @@ int    draw_line_high(t_img_data *data, t_pixel a, t_pixel b)
 
 void    draw_line(t_img_data *data, t_pixel a, t_pixel b)
 {
+/*
+** Calculate the slope between the two points
+** and call each function accordingly.
+** Swap the points if b > a to draw the lines always in the same +direction
+*/
     if (abs(b.y - a.y) < abs(b.x - a.x))
     {
         if (a.x > b.x)
@@ -102,6 +109,10 @@ void    draw_line(t_img_data *data, t_pixel a, t_pixel b)
 
 void    draw_map(t_map_tools *mtools, t_img_data *data)
 {
+/*
+** Draw a line from the current point to the next in the x and y axes
+** Do this for every point in the map except the last ones
+*/
     int     y;
     int     x;
     t_pixel point_a;
