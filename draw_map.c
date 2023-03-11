@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:10:56 by mpascual          #+#    #+#             */
-/*   Updated: 2023/03/08 23:03:10 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/11 17:28:15 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ int    draw_line_high(t_img_data *data, t_pixel a, t_pixel b)
 }
 
 void    draw_line(t_img_data *data, t_pixel a, t_pixel b)
-{
 /*
 ** Calculate the slope between the two points
 ** and call each function accordingly.
 ** Swap the points if b > a to draw the lines always in the same +direction
 */
+{
     if (abs(b.y - a.y) < abs(b.x - a.x))
     {
         if (a.x > b.x)
@@ -108,11 +108,11 @@ void    draw_line(t_img_data *data, t_pixel a, t_pixel b)
 }
 
 void    draw_map(t_map_tools *mtools, t_img_data *data)
-{
 /*
 ** Draw a line from the current point to the next in the x and y axes
 ** Do this for every point in the map except the last ones
 */
+{
     int     y;
     int     x;
     t_pixel point_a;
@@ -124,6 +124,7 @@ void    draw_map(t_map_tools *mtools, t_img_data *data)
         x = 0;
         while (x < mtools->columns)
         {
+            ft_printf("x=%i    y=%i\n", x, y);
             point_a = voxtopix(mtools->map[y][x]);
             if (x < mtools->columns - 1)
             {

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:04 by mpascual          #+#    #+#             */
-/*   Updated: 2023/03/02 19:58:09 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/11 17:35:55 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void    diy_pixel_put(t_img_data *data, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-/* Here the 3D point (voxel) gets converted to it's 2D equivalent (pixel)
-** and adjusted for isometric representation
-*/
-
 t_pixel voxtopix(t_voxel source)
+/*
+** The 3D point (voxel) gets converted to it's 2D isometric representation
+** (pixel) by rotating the map 45º and reducing the height by half
+*/
 {
     t_pixel dst;
 

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:58:18 by mpascual          #+#    #+#             */
-/*   Updated: 2023/03/02 20:33:26 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/11 17:27:11 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int main(int argc, char **argv)
         data.img = mlx_new_image(vars.mlx, vars.img_width, vars.img_height);
 	    data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, 
                                     &data.line_length, &data.endian);
+        ft_putstr("before draw_map()\n");
         draw_map(&mtools, &data);
+        ft_putstr("after draw_map()\n");
         mlx_put_image_to_window(vars.mlx, vars.win, data.img, 0, 0);
         mlx_hook(vars.win, 2, 1L<<0, keypress, &vars);
         mlx_hook(vars.win, 17, 0L, close_win, &vars);

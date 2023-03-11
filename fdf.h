@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:59:02 by mpascual          #+#    #+#             */
-/*   Updated: 2023/03/08 22:19:40 by mpascual         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:25:12 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_mlx_vars
     int     img_width;
     int     img_height;
 }               t_mlx_vars;
-
 
 typedef struct s_voxel
 {
